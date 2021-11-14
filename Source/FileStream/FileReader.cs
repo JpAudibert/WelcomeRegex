@@ -1,10 +1,12 @@
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 
 namespace Source.FileStream
 {
     class FileReader
     {
-        public static string[] readFile(string file)
+        public static List<string> readFile(string file)
         {
             string[] numberValues = { };
 
@@ -13,21 +15,9 @@ namespace Source.FileStream
                 numberValues = File.ReadAllLines(file);
             }
 
-            return numberValues;
+            List<string> numberValuesList = numberValues.ToList();
+
+            return numberValuesList;
         }
-
-        public static string readLine(string file)
-        {
-            string line = "";
-
-            if (File.Exists(file))
-            {
-                line = File.ReadLines(file).ToString();
-            }
-
-            return line;
-
-        }
-
     }
 }
