@@ -6,18 +6,18 @@ namespace Source.FileStream
 {
     class FileReader
     {
-        public static List<string> readFile(string file)
+        public static List<string> ReadFile(string file)
         {
-            string[] numberValues = { };
+            string[] lines = { };
 
             if (File.Exists(file))
             {
-                numberValues = File.ReadAllLines(file);
+                lines = File.ReadAllLines(file);
             }
 
-            List<string> numberValuesList = numberValues.ToList();
+            List<string> linesList = lines.ToList();
 
-            return numberValuesList;
+            return linesList;
         }
     }
 }

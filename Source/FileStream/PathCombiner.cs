@@ -1,21 +1,16 @@
 using System;
+using System.Collections.Generic;
 using System.IO;
 
-namespace Source.FileSrteam
+namespace Source.FileStream
 {
-    class PathCombiner
+    public class PathCombiner
     {
-        public static string combineInputPaths(string fileToCombine)
+        public static string combineInputPaths(List<string> fileToCombine)
         {
-            var currentDir = Environment.CurrentDirectory;
-            var fileCombined = Path.GetFullPath(Path.Combine(currentDir, "files", fileToCombine));
-            return fileCombined;
-        }
-
-        public static string combineOutputPaths(string fileToCombine)
-        {
-            var currentDir = Environment.CurrentDirectory;
-            var fileCombined = Path.GetFullPath(Path.Combine(currentDir, "output-files", fileToCombine));
+            string currentDir = Environment.CurrentDirectory;
+            fileToCombine.Insert(0, currentDir);
+            string fileCombined = Path.GetFullPath(Path.Combine(fileToCombine.ToArray()));
             return fileCombined;
         }
     }
